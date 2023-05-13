@@ -8,7 +8,7 @@ input [4:0] Rdin;
 input [1:0] WBin;
 input clk, rst;
 	
-reg [69:0] state;
+reg [70:0] state;
 	
 always @(posedge clk) begin
   if (rst == 1'b1)begin

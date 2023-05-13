@@ -35,8 +35,8 @@ always @(*) begin
         ForwardB <= 2'b01;
     end
     default: begin //default case
-      ForwardA <= ForwardA;
-      ForwardB <= ForwardB;
+      ForwardA <= 1'b0;
+      ForwardB <= 1'b0;
     end
   endcase
 end // end always    

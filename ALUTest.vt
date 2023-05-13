@@ -1,0 +1,31 @@
+`timescale 1ns/1ps
+
+module ALUTest();
+
+reg [31:0] a,b;
+reg [3:0] op;
+wire [31:0] out;
+wire flag_zero;
+
+ALU ALU1(.out, .flag_zero, .a, .b, .op);
+
+initial begin
+#20 a = 32'h2;
+    b = 32'h2;
+    op = 4'h0;
+#20 op = 4'h1;
+#20 op = 4'h2;
+#20 op = 4'h3;
+#20 op = 4'h4;
+#20 op = 4'h5;
+#20 op = 4'h6;
+#20 op = 4'h7;
+#20 op = 4'h8;
+#20 op = 4'hc;
+#20 $stop;
+end
+
+initial
+ $monitor($time, " :  %h (%h) %h = %h, flag:%b", a, op, b, out, flag_zero);
+
+endmodule

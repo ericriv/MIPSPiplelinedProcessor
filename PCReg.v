@@ -11,7 +11,8 @@ always@(posedge clk) begin
     state <= 32'b0;
   end
   else begin
-    state <= in;
+    if(write == 1'b1)
+      state <= in;
   end
 end
 

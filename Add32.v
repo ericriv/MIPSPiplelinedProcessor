@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module Add32(sum, a, b);
 
 output [31:0] sum;

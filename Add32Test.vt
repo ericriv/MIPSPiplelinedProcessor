@@ -1,0 +1,21 @@
+`timescale 1ns/1ps
+
+module Add32Test();
+
+reg [31:0] a,b;
+wire [31:0] sum;
+
+Add32 add(sum, a, b);
+
+initial begin
+#20 a = 32'h0;
+    b = 32'hFFFFFFFF;
+#20 a = 32'h1;
+    b = 32'hFFFFFFF9;
+#20 $stop;
+end
+
+initial
+ $monitor($time, " :  %h + %h = %h", a, b, sum);
+
+endmodule

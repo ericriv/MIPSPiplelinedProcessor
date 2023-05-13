@@ -3,14 +3,14 @@ module EXMEM_Reg(WBout, Mout, ALUout, WDout, Rdout, WBin, Min, ALUin, WDin, Rdin
 output [31:0] ALUout, WDout;
 output [4:0] Rdout;
 output [1:0] WBout;
-output [2:0] Mout;
+output [1:0] Mout;
 input [31:0] ALUin, WDin;
 input [4:0] Rdin;
 input [1:0] WBin; 
-input [2:0] Min;
+input [1:0] Min;
 input clk, rst;
 	
-reg [73:0] state;
+reg [72:0] state;
 	
 always @(posedge clk) begin
   if (rst == 1'b1)begin

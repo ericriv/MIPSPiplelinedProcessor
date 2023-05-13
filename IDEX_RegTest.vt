@@ -1,0 +1,35 @@
+module IDEX_RegTest();
+
+reg [31:0] R1DATin, R2DATin, SEin;
+reg [4:0] Rtin, Rdin, Rsin;
+reg [1:0] WBin;
+reg [1:0] Min;
+reg [3:0] EXin;
+reg clk, rst;
+
+wire [31:0] R1DATout, R2DATout,  SEout;
+wire [4:0] Rtout, Rdout, Rsout;
+wire [1:0] WBout;
+wire [1:0] Mout;
+wire [3:0] EXout;
+
+IDEX_Reg IER(.WBin,  .Min,  .EXin,  .R1DATin, .R2DATin,  .SEin,  .Rtin,
+		.Rdin, .Rsin, .WBout, .Mout, .EXout, .R1DATout, .R2DATout,
+		.SEout, .Rtout, .Rdout, .Rsout, .clk, .rst);
+
+initial begin
+#5 {clk, rst} = 2'b01;
+   {WBin,  Min,  EXin,  R1DATin, R2DATin,  SEin,  Rtin, Rdin, Rsin} = 119'hfff;
+
+#20 rst = 1'b0;
+
+#40 $stop;
+end
+
+always
+#10 clk = ~clk;
+
+initial
+  $monitor($time,":  Big = %h\n", {WBout, Mout, EXout, R1DATout, R2DATout, SEout, Rtout, Rdout, Rsout});
+
+endmodule

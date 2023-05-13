@@ -1,16 +1,20 @@
-module InstructionMem(out, address, clk);
+//For simulation use only//
+//Not synthesizeable//
 
-output reg [31:0] out;
+`timescale 1ns/1ps
+
+module InstructionMem(out, address);
+
+output [31:0] out;
 input [31:0] address;
-input clk;
 
-reg [31:0] Regs [0:31];
+reg [31:0] Regs [0:255];
 
-//need to assign the registers instruction data
-
-always@(posedge clk) begin
-  out <= Regs[address];
+initial begin
+  $readmemh("Program.txt", Regs);
 end
+
+assign out = Regs[address];
 
 
 endmodule

@@ -1,6 +1,6 @@
 module MUX3to1(out, a, b, c, op);
 
-parameter n = 31;
+parameter n = 32;
 
 output reg [n-1:0] out;
 input [n-1:0] a, b, c;

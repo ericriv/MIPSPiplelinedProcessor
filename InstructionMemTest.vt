@@ -1,0 +1,22 @@
+`timescale 1ns/1ps
+
+module InstructionMemTest();
+
+reg [31:0] address;
+wire [31:0]out;
+
+InstructionMem IM(.out, .address);
+
+initial begin
+    address = 32'b0;
+#25 $stop;
+end
+
+always
+#5 address = address + 4;
+
+initial
+  $monitor($time, " : address: %h = %h", address, out);
+
+
+endmodule

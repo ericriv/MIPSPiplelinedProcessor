@@ -1,0 +1,23 @@
+module MUX2to1Test();
+
+reg [7:0] a, b;
+reg op;
+wire [7:0] out;
+
+MUX2to1 #(.n(8)) M(.out, .a, .b, .op);
+
+initial begin
+#5 a = 8'hf;
+   b = 8'b0;
+   op = 1'b0;
+
+#5 op = 1'b1;
+
+#20 $stop;
+end
+
+initial
+  $monitor($time,":  a = %h, b = %h, op = %h, out = %h", a, b, op, out);
+
+
+endmodule

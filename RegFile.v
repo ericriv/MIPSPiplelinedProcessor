@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module RegFile(clk, in, R1addr, R2addr, WRaddr, RegWrite, R1out, R2out);
 
 input clk;
@@ -12,8 +14,8 @@ always@(negedge clk) begin
   if(RegWrite == 1)  begin
       Regs[WRaddr] <= in;
   end
+  Regs[0] <= 32'b0;
 end
-
 
 assign  R1out = Regs[R1addr];
 assign  R2out = Regs[R2addr];

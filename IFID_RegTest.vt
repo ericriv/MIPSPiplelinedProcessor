@@ -1,0 +1,34 @@
+`timescale 1ns/1ps
+
+module IFID_RegTest();
+
+reg [31:0] PCin, INSTRin;
+reg clk, rst;
+wire [31:0] PCout, INSTRout;
+
+IFID_Reg IFID(.INSTRout, .PCin, .PCout, .INSTRin, .clk, .rst);
+
+initial begin
+#5  {clk,rst} = 2'b01;
+    PCin = 32'h0;
+    INSTRin = 32'h0;
+#20 rst = 1'b0;
+    PCin = PCin + 4;
+    INSTRin = INSTRin + 1;
+#20 rst = 1'b0;
+    PCin = PCin + 4;
+    INSTRin = INSTRin + 1;
+#20 rst = 1'b0;
+    PCin = PCin + 4;
+    INSTRin = INSTRin + 1;
+#100 $stop;
+end
+
+
+always
+#10  clk = ~clk;
+
+initial
+  $monitor($time, " : PC: %h = %h", PCout, INSTRout);
+
+endmodule

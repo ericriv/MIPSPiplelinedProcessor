@@ -10,11 +10,15 @@ always@(*) begin
     0: out <= a & b;
     1: out <= a | b;
     2: out <= a + b;
+    3: out <= 32'hFFFFFFFF;
+    4: out <= 32'h0;
+    5: out <= a * b;
     6: out <= a - b;
     7: begin 
          if(a < b)
            out <= 32'b1;
        end
+    8: out <= a / b;
    12: out <= ~(a | b);
     default: out <= 32'b0;
   endcase

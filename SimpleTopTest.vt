@@ -1,0 +1,22 @@
+`timescale 1ns/1ps
+
+module SimpleTopTest();
+
+reg clk, reset;
+
+
+SimpleTop ST(.clk, .reset);
+
+initial begin
+#5{clk,reset} = 2'b01;
+
+#20 reset = 1'b0;
+
+#220 $stop;
+end
+
+always
+#10 clk = ~clk;
+
+
+endmodule
