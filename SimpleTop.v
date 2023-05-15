@@ -5,6 +5,7 @@ module SimpleTop(clk, reset);
 //inputs//
 input clk, reset;
 
+
 //IF wire declarations//
 wire [31:0] PCout, PCin, NextPC, Instr, BMUXout, JMUXout;
 wire HPCwrite;

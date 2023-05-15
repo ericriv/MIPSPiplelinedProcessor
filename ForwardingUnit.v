@@ -15,28 +15,40 @@ always @(*) begin
     2'b01: begin //MEMWBRegWrite active
       if(MEMWBRd != 0 && MEMWBRd == IDEXRs)
         ForwardA <= 2'b01;
+      else
+        ForwardA <= 2'b00;
       if(MEMWBRd != 0 && MEMWBRd == IDEXRt)
         ForwardB <= 2'b01;
+      else
+        ForwardB <= 2'b00;
     end
     2'b10: begin //EXMEMRegWrite active
       if(EXMEMRd != 0 && EXMEMRd == IDEXRs)
         ForwardA <= 2'b10;
+      else
+        ForwardA <= 2'b00;
       if(EXMEMRd != 0 && EXMEMRd == IDEXRt)
         ForwardB <= 2'b10;
+      else
+        ForwardB <= 2'b00;
     end
     2'b11: begin //both active
       if(EXMEMRd != 0 && EXMEMRd == IDEXRs) //want most recent data if double data hazard
         ForwardA <= 2'b10;
       else if(MEMWBRd != 0 && MEMWBRd == IDEXRs )
         ForwardA <= 2'b01;
+      else
+        ForwardA <= 2'b00;
       if(EXMEMRd != 0 && EXMEMRd == IDEXRt) //want most recent data if double data hazard
         ForwardB <= 2'b10;
       else if(MEMWBRd != 0 && MEMWBRd == IDEXRt)
         ForwardB <= 2'b01;
+      else
+        ForwardB <= 2'b00;
     end
     default: begin //default case
-      ForwardA <= 1'b0;
-      ForwardB <= 1'b0;
+      ForwardA <= 2'b0;
+      ForwardB <= 2'b0;
     end
   endcase
 end // end always    
