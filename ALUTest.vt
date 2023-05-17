@@ -10,8 +10,8 @@ wire flag_zero;
 ALU ALU1(.out, .flag_zero, .a, .b, .op);
 
 initial begin
-#20 a = 32'h2;
-    b = 32'h2;
+#20 a = 32'h4;
+    b = 32'h3;
     op = 4'h0;
 #20 op = 4'h1;
 #20 op = 4'h2;

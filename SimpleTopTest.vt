@@ -4,7 +4,6 @@ module SimpleTopTest();
 
 reg clk, reset;
 
-
 SimpleTop ST(.clk, .reset);
 
 initial begin
@@ -12,11 +11,12 @@ initial begin
 
 #20 reset = 1'b0;
 
-#220 $stop;
+#500 $stop;
 end
 
 always
 #10 clk = ~clk;
+
 
 
 endmodule

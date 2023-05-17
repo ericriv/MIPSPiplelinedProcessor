@@ -21,6 +21,17 @@ always@(*) begin
       ALUSrc = 1'b0;
       Jump = 1'b0;
     end
+    6'h8: begin //Rtype
+      RegWrite = 1'b1;
+      MemToReg = 1'b0;
+      Branch = 1'b0;
+      MemRead = 1'b0;
+      MemWrite = 1'b0;
+      RegDest = 1'b0;
+      ALUOp = 2'b00;
+      ALUSrc = 1'b1;
+      Jump = 1'b0;
+    end
     6'h23: begin //lw
       RegWrite = 1'b1;
       MemToReg = 1'b1;
